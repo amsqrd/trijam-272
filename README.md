@@ -24,11 +24,14 @@ python -m http.server 8000
 
 ## Useful Resources
 
-TBD
+* [ColorHunt.co palette](https://colorhunt.co/palette/615efc7e8ef1d1d8c5eeeeee)
 
 ## Third Party Assets
 
-TBD
+* Bigger Than Ever: FX Essentials 2 (WAFXE2 Impact Complex3.wav)
+* Mega STX Pack (rats_rage_2.wav)
+* Mega Music Collection (Loop#2.wav)
+
 
 ## Maintainers
 

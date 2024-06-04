@@ -1,0 +1,64 @@
+:root {
+    --primary-color: #615EFC;
+    --primary-color-light: #7E8EF1;
+    --secondary-color: #D1D8C5;
+    --off-white: #EEEEEE;
+    --background-gradient: linear-gradient(.45turn, var(--primary-color), var(--primary-color-light));
+}
+
+html, 
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: sans-serif;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    background: radial-gradient(var(--secondary-color), var(--off-white));
+}
+
+main {
+    height: 100%;
+    padding-top: 5%;
+
+    #game-container {
+        margin: 0 auto;
+        padding: 8px;
+        border-radius: 24px;
+        border: 1px solid var(--primary-color-light);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 800px;
+        background: var(--background-gradient);
+
+        canvas {
+            /** Nested radius: parent radius - parent padding? **/
+            border-radius: 16px;
+        }
+    }
+}
+
+header,
+footer {
+    padding: 1rem 2rem;
+}
+
+header {
+    background: var(--background-gradient);
+
+    a {
+        text-decoration: none;
+        font-weight: bold;
+        color: var(--off-white);
+        text-shadow: 1px 1px black;
+    }
+}
+
+footer {
+    text-align: center;
+    user-select: none;
+}
