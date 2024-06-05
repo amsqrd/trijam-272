@@ -3,6 +3,8 @@ class Game extends Phaser.Scene {
     cats;
     walls = [];
     graphics;
+    squeakAudio;
+    impactAudio;
 
     preload () {
         // Load assets
@@ -22,6 +24,9 @@ class Game extends Phaser.Scene {
             loop: true,
             volumn: 2
         });
+
+        this.squeakAudio = this.sound.add('squeak-audio');
+        this.impactAudio = this.sound.add('impact-audio');
 
         // Change background color
         this.cameras.main.setBackgroundColor(0xEEEEEE);
@@ -43,26 +48,27 @@ class Game extends Phaser.Scene {
             frameRate: 20
         });
 
-        this.physics.add.existing(this.graphics);
-        this.physics.world.enable(this.graphics);
-        this.physics.add.collider(this.mouse, this.graphics);
+        this.physics.add.collider(this.mouse);
 
         // Mouse event
         this.input.mouse.disableContextMenu();
         this.input.on('pointerdown', (pointer) => {
             let line;
-            let width = 150;
+            this.impactAudio.play();
+            
             if (pointer.rightButtonDown()) {
                 // create vertical line
-                line = new Phaser.Geom.Line(pointer.x, pointer.y, pointer.x, pointer.y - width, pointer.x, pointer.y + width);
+                line = this.add.rectangle(pointer.x, pointer.y, 10, 1200, 0x615EFC);
             } else if (pointer.leftButtonDown()) {
                 // create horizontal line
-                line = new Phaser.Geom.Line(pointer.x, pointer.y, pointer.x - width, pointer.y, pointer.x + width, pointer.y);
+                line = this.add.rectangle(pointer.x, pointer.y, 1600, 10, 0x615EFC);
             }
 
-            Phaser.Geom.Line.CenterOn(line, pointer.x, pointer.y);
-
+            //Phaser.Geom.Line.CenterOn(line, pointer.x, pointer.y);
             this.walls.push(line);
+            this.physics.add.existing(line);
+
+            this.physics.add.collider(this.mouse, line);
             this.redraw();
         });
     }
@@ -86,15 +92,16 @@ class Game extends Phaser.Scene {
             this.mouse.anims.play('idle');
         }
 
-        for(let wall of this.walls) {
-            const length = Phaser.Geom.Line.Length(wall);
+        // for(let wall of this.walls) {
+        //     //const length = Phaser.Geom.Line.Length(wall);
 
-            if(length < 1600) {
-                Phaser.Geom.Line.Extend(wall, 10, 10);
-            }
-        }
+        //     if(length < 1600) {
+                
+        //         //Phaser.Geom.Line.Extend(wall, 10, 10);
+        //     }
+        // }
 
-        this.redraw();
+        //this.redraw();
     }
 
     redraw () {
