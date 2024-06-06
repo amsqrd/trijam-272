@@ -7,7 +7,15 @@ Try out it out [here](https://amsqrd.github.io/trijam-272/)!
 
 ## Synopsis 
 
-TBD
+In **CATastrophe** you controlling a mouse trying to evade capture from a pack of cats. Dodge their paws by creating walls to separate you from them. Be careful not to trap yourself!
+
+To play the game:
+
+* use ***WASD*** to move the mouse
+* ***right mouse*** click to create a vertical wall
+* ***left mouse*** click to create a horizontal wall
+
+Creating a wall directly on top off the **mouse** or a **cat** will destroy them! 
 
 ## Project Setup 
 
@@ -31,13 +39,16 @@ python -m http.server 8000
 * Bigger Than Ever: FX Essentials 2 (WAFXE2 Impact Complex3.wav)
 * Mega STX Pack (rats_rage_2.wav)
 * Mega Music Collection (Loop#2.wav)
-
+* Explosion Spritesheet: http://opengameart.org/content/explosion-sheet
+* Explosion sound effect: http://opengameart.org/content/wgs-sound-fx-explosion-1
 
 ## Maintainers
 
 * [Ashley Grenon - @townsean](https://github.com/townsean)
 * [@matownsend4](https://github.com/matownsend4)
 * [@mktownsend1](https://github.com/mktownsend1)
+
+## License
 
 MIT License
 
