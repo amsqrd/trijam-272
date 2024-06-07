@@ -6,6 +6,7 @@ class Game extends Phaser.Scene {
     squeakAudio;
     impactAudio;
     explosionAudio;
+    backgroundAudio;
 
     preload () {
         // Load assets
@@ -25,8 +26,8 @@ class Game extends Phaser.Scene {
 
     create () {
         // Setup background audio on repeat
-        let backgroundAudio = this.sound.add('background-audio');
-        backgroundAudio.play({
+        this.backgroundAudio = this.sound.add('background-audio');
+        this.backgroundAudio.play({
             loop: true,
             volumn: 0.5
         });
@@ -129,7 +130,7 @@ class Game extends Phaser.Scene {
         // Setup explosion sprite animation state
         this.anims.create({
             key: 'explode',
-            frames: this.anims.generateFrameNumbers('explosion', { start: 0, end: 64 }),
+            frames: this.anims.generateFrameNumbers('explosion', { start: 0, end: 63 }),
             frameRate: 64
         });
 
@@ -145,8 +146,9 @@ class Game extends Phaser.Scene {
 
     destroyMouse() {
         this.squeakAudio.play();
-
-        this.scene.restart();
+        this.backgroundAudio.stop();
+        this.scene.stop();
+        this.scene.start();
     }
 }
 
